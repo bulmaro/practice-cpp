@@ -28,6 +28,12 @@ namespace {
 	TEST(PrimeTest, n6) {
 		EXPECT_FALSE(isPrime(6));
 	};
+	TEST(PrimeTest, n100) {
+		EXPECT_FALSE(isPrime(100));
+	};
+	TEST(PrimeTest, n101) {
+		EXPECT_TRUE(isPrime(101));
+	};
 }
 
 /* 
