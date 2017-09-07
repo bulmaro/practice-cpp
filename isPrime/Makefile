@@ -1,4 +1,4 @@
-GTEST=/Users/esteban/Dev/practice-cpp/isPrime/gtest
+GTEST=./gtest
 
 test :
 	g++ tests.cpp $(GTEST)/src/gtest-all.cc \
