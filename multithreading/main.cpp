@@ -15,6 +15,8 @@
 // TODO: Write tests!
 // TODO: Scale?
 // TODO: WHAT ELSE TO DO???
+// TODO: Allow replenishing of inventory
+// TODO: Multiple inventories? Look more than one place.
 
 #include <cstdlib>
 #include <iostream>
