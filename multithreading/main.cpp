@@ -20,8 +20,8 @@ void makeSale(int);
 
 using namespace std;
 int inventory = 15;
-const int min_wait = 500000;
-const int max_wait = 2000000;
+const int min_wait = 50000;
+const int max_wait = 200000;
 
 /*
  * 
@@ -30,8 +30,12 @@ int main(int argc, char** argv) {
     cout << "Global Before Items: " << inventory << "\n";
 
     // Make a sale
-    thread t1(makeSale, 2);    
+    thread t1(makeSale, 2);
+    thread t2(makeSale, 1);
+    thread t3(makeSale, 3);
     t1.join();
+    t2.join();
+    t3.join();
     
     cout << "Global After Items: " << inventory << "\n";
     
@@ -41,6 +45,7 @@ int main(int argc, char** argv) {
 void makeSale(int itemsToSell) {
     int available;
     int timeToWait;
+    int soldItemsHere=0;
     std::thread::id this_id = std::this_thread::get_id();
     do {
         timeToWait = min_wait + (rand() % static_cast<int>(max_wait - min_wait + 1));
@@ -49,12 +54,13 @@ void makeSale(int itemsToSell) {
         available = inventory;
         cout << "(" << this_id << ") " << "Before sale Items: " << available << "\n";
         available -= itemsToSell;
+        soldItemsHere += itemsToSell;
         cout << "(" << this_id << ") " << "Waiting " << timeToWait << " micro seconds\n";
         usleep(timeToWait);
         cout << "(" << this_id << ") " << "Salesman x is making a sale of " << itemsToSell << " items\n";        
         inventory = available;
         cout << "(" << this_id << ") " << "After sale Items: " << available << "\n";
     } while (available >= itemsToSell);
-    cout << "(" << this_id << ") " << "Done making sales\n";
+    cout << "(" << this_id << ") " << "Done selling " << soldItemsHere << " items\n";
 }
 
