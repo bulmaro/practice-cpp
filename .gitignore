@@ -1,3 +1,5 @@
 
 # Ignore anything .o
 *.o
+/multithreading/build/
+/multithreading/dist/
