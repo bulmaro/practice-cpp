@@ -3,3 +3,5 @@
 *.o
 /multithreading/build/
 /multithreading/dist/
+/SemaphoreExample/build/
+/SemaphoreExample/dist/
